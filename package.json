@@ -1,0 +1,23 @@
+{
+  "name": "canrdf",
+  "version": "1.0.0",
+  "description": "Playing with the RDF Canonicalization algorithm...",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rdf",
+    "signature",
+    "canonicalization"
+  ],
+  "author": "Ivan Herman",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "crypto": "^1.0.1",
+    "fs": "0.0.1-security",
+    "n3": "^0.11.3",
+    "underscore": "^1.8.3"
+  }
+}

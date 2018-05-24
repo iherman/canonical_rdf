@@ -1,0 +1,4 @@
+<https://example.com/1> <https://example.com/2> _:b0 .
+<https://example.com/1> <https://example.com/2> _:b1 .
+_:b0 <https://example.com/3> _:b3 .
+_:b1 <https://example.com/3> _:b3 .

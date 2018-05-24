@@ -1,0 +1,25 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+
+
+<http://www.example.com/na> {
+    <https://www.ivan-herman.name/foaf>
+        foaf:primaryTopic [
+            a foaf:Person ;
+            foaf:name "Ivan Herman" ;
+            foaf:birthday "1955-02-24"^^xsd:date ;
+            schema:address [
+                schema:addressLocality "Amstelveen" ;
+                schema:url <http://dbpedia.org/resource/Amstelveen> ;
+            ];
+        ];
+        dc:title "My Home page";
+    .
+}
+
+<http://www.namivan.com> <http://www.i.c> _:er .
+_:er dc:subject "na mi van".
