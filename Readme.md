@@ -15,7 +15,7 @@ The reason for doing this implementation was to explore whether it is possible t
 
 ## What is meant by “Canonical RDF Graph/Dataset”?
 
-A matter of terminology: in this paper (and this implementation) a canonical version _can(G)_ of the Graph/Dataset _G_ is isomorphic to _G_ (i.e., _can(G)≅G_), and if _H≅G_ then _can(H)=can (G)_. In other words, it is an isomorphic graph where the blank node renaming bijection, characterizing the isomorphism, is _deterministic_.
+A matter of terminology: in this paper (and this implementation) a canonical version _can(G)_ of the Graph/Dataset _G_ is isomorphic to _G_ (i.e., _can(G)≅G_), and if _H≅G_ then _can(H)=can(G)_. In other words, it is an isomorphic graph where the blank node renaming bijection is _deterministic_.
 
 ## [Adaptation of the algorithms to handle datasets](id:datasets)
 
