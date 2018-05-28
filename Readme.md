@@ -22,7 +22,7 @@ A matter of terminology: in this paper (and this implementation) a canonical ver
 The changes/additions are as follows (each of those changes are relevant only if there _is_ a separate graph identifier, i.e., if we have a quad instead of a triple. If this is not the case, the algorithm falls back to the original).
 
 1. In algorithm 1, at step 13 and 16, respectively: the _hashTuple_ function gets a fourth argument, before the '+' and '-' characters, respectively, referring to the hash value of the graph identifier;
-2. In algorithm 1, after step 17, a similar branch is added for the case of a _(s,p,p,b)_ quad (i.e., if the graph identifier is a blank node); the _hashTuple_ in that branch hashes the full _(s,p,o)_ triple, plus the '.' character.
+2. In algorithm 1, after step 17, a similar branch is added for the case of a _(s,p,o,b)_ quad (i.e., if the graph identifier is a blank node); the _hashTuple_ in that branch hashes the full _(s,p,o)_ triple, plus the '.' character.
 3. The lexicographic comparison of quads for, e.g., comparing graphs/datasets, take into account the possible graph id, too.
 
 ## [Further details that should be provided for a specification](id:spec)
@@ -71,7 +71,7 @@ The article says:
 
 > “The function _hashBag(·)_ computes hashes in a commutative and associative way over its inputs.”
 
-_This implementation uses a module 255 sum of the `Buffer` entries in the `node.js` representations of the hashes._
+_This implementation uses a modulo 255 sum of the `Buffer` entries in the `node.js` representations of the hashes._
 
 ### What is the precise comparison method of graphs?
 
