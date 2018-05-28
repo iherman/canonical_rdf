@@ -5,7 +5,7 @@
 1. A. Hogan, “Skolemising Blank Nodes while Preserving Isomorphism,”, WWW2015 conference proceedings, 2015, pp. 430–440. [See PDF version](http://www.www2015.it/documents/proceedings/proceedings/p430.pdf).
 2. A. Hogan, “Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes,” ACM Trans. Web, vol. 11, no. 4, pp. 22:1–22:62, Jul. 2017. [See PDF version](http://aidanhogan.com/docs/rdf-canonicalisation.pdf).
 
-(The second paper supersedes the first insofar that it slightly simplifies the relevant algorithm, although it also contains much more than what is relevant for this repository. Note also that the URL above for the second paper refers to the author’s copy on his Web site, which takes care of some minor bugs that surfaced since the publication. That version was used for this implementation.)
+(The second paper supersedes the first insofar that it slightly simplifies the relevant algorithm, although it also contains much more than what is relevant for this repository. Note also that the URL above for the second paper refers to the author’s copy on his Web site, which takes care of [some minor bugs](http://aidanhogan.com/#errataH17) that surfaced since the publication. That version was used for this implementation.)
 
 This repository contains a proof-of-concept implementation in node.js of what is referred to as the “iso-canonical algorithm” described in the papers, using the N3.js library for the representation of quads. It is fully based on Aidan’s algorithm, except for one tiny extension: while Aidan describes the canonicalization of RDF _graphs_, this implementations deals with RDF _datasets_ (a.k.a. named graphs). The description of the changes are described [below](#datasets).
 
@@ -41,9 +41,9 @@ Aidan’s algorithm specifies _can(G)_, i.e., the deterministic mapping of the b
 
 ### Which hash function to use?
 
-The paper does not specify which hash function to use, just that it should be a perfect one. It also contains some measurements and calculation on which functions are worth using.
+The paper does not specify which hash function to use, just that it should be a perfect one. It also contains some measurements and calculation on which functions are worth using. Note that we don't need a cryptographically strong hash function; it is only used to separate blank nodes. Higher level algorithms, i.e., producing the final and public signature of the graph may choose stronger algorithms if needed.
 
-_This implementation uses md4._ The only reason is that the resulting values are relatively short which makes it easier to debug. A final specification should probably use SHA256. (Note that the article refers to SHA128 as being probably enough; however, the OpenSSL library, at least as used in node.js, does not seem to offer this function hence the choice for SAH256 as being probably more widely deployed.) The `crypto` package in node.js (and, consequently, this implementation) stores the values of hashes as a `Buffer` instance of unsigned 8 bit integers; the number of such integers depend on the specific hash function used.
+_This implementation uses md5._ The only reason is that the resulting values are relatively short which makes it easier to debug. A final specification should probably use SHA256. (Note that the article refers to SHA128 as being probably enough; however, the OpenSSL library, at least as used in node.js, does not seem to offer this function hence the choice for SAH256 as being probably more widely deployed.) The `crypto` package in node.js (and, consequently, this implementation) stores the values of hashes as a `Buffer` instance of unsigned 8 bit integers; the number of such integers depend on the specific hash function used.
 
 ### What does a "0" value of a hash mean?
 
@@ -70,6 +70,8 @@ _This implementation uses the OpenSSL (i.e., `node.js`’s `crypto` package) fac
 The article says:
 
 > “The function _hashBag(·)_ computes hashes in a commutative and associative way over its inputs.”
+
+Note that the quality of this function is crucial because, in some cases, hash collision can occur that may create problems. The experimentation of Aidan show that such collisions do happen in very rare (and artificial) cases and that there are some (undocumented) methods to handle them. This is probably the aspect of the algorithm that will need most of the care if a fool-proof algorithm is to be produced... 
 
 _This implementation uses a modulo 255 sum of the `Buffer` entries in the `node.js` representations of the hashes._
 
