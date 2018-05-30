@@ -71,9 +71,21 @@ The article says:
 
 > “The function _hashBag(·)_ computes hashes in a commutative and associative way over its inputs.”
 
-Note that the quality of this function is crucial because, in some cases, hash collision can occur that may create problems. The experimentation of Aidan show that such collisions do happen in very rare (and artificial) cases and that there are some (undocumented) methods to handle them. This is probably the aspect of the algorithm that will need most of the care if a fool-proof algorithm is to be produced... 
+Note that the quality of this function is crucial because, in some cases, hash collision can occur that may create problems. The experimentation of Aidan but also the experience with this implementation shows that such collision do occur (albeit in rare and artificial cases); this was the case when, for example, the XOR values of the `Buffer` entries were used.
 
-_This implementation uses a modulo 255 sum of the `Buffer` entries in the `node.js` representations of the hashes._
+_An [earlier version of this implementation](https://github.com/iherman/canonical_rdf/releases/tag/original) used a modulo 255 sum of the `Buffer` entries in the `node.js` representation of the hashes._
+
+However, _the current implementation takes a somewhat more complex change of the algorithm_, essentially implementing:
+
+_hashBag(t1,...,tn) = hashTuple(sort(t1,...,tn))_
+
+Using this approach to _hashBag_ requires a slight modification of Algorithm 1, though, namely:
+
+1. A new object, _hash_bag_ is initialized before line 12; this object stores, for each _b_, an array consisting (initially) of the single value of _hash<sub>i</sub>[b]_
+2. Lines 14 and 17 are replaced by adding the value of _c_ to the corresponding array in _hash_bag_ for the key _b_
+3. Before line 18 _hash<sub>i</sub>_ is updated, for each _b_ with the value of _hashTuple(sort(hash_bag[b]))_
+
+Provided the hash function is (acceptably) perfect, this approach secures a deterministic and collision-free hash value when needed.
 
 ### What is the precise comparison method of graphs?
 
