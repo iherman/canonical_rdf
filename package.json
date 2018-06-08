@@ -23,6 +23,7 @@
     "license": "W3C",
     "dependencies": {
         "assert": "^1.4.1",
+        "commander": "^2.15.1",
         "crypto": "^1.0.1",
         "fs": "0.0.1-security",
         "n3": "^0.11.3",
