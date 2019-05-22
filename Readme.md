@@ -1,3 +1,6 @@
+[![DOI](https://zenodo.org/badge/134724887.svg)](https://zenodo.org/badge/latestdoi/134724887)
+
+
 # Proof-of-concept implementation of Aidan Hogan’s iso-canonical algorithm for RDF graph canonicalization
 
 [Aidan Hogan](http://aidanhogan.com/) has published two papers on one of the fundamental building blocks for the RDF infrastructure: calculating a canonical RDF graph. A canonical graph allows, for example, to sign an RDF graph, needed for various security, consistency, provenance, etc., considerations in applications like verifiable claims, usage of linked data on block chain, consistency proof for ontologies, publication of data, etc. The two papers are:
