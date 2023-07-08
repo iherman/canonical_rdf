@@ -5,7 +5,7 @@
 
 [Aidan Hogan](http://aidanhogan.com/) has published two papers on one of the fundamental building blocks for the RDF infrastructure: calculating a canonical RDF graph. A canonical graph allows, for example, to sign an RDF graph, needed for various security, consistency, provenance, etc., considerations in applications like verifiable claims, usage of linked data on block chain, consistency proof for ontologies, publication of data, etc. The two papers are:
 
-1. A. Hogan, “Skolemising Blank Nodes while Preserving Isomorphism,”, WWW2015 conference proceedings, 2015, pp. 430–440. [See PDF version](http://www.www2015.it/documents/proceedings/proceedings/p430.pdf).
+1. A. Hogan, “Skolemising Blank Nodes while Preserving Isomorphism,”, WWW2015 conference proceedings, 2015, pp. 430–440. [See PDF version](https://aidanhogan.com/docs/skolems_blank_nodes_www.pdf).
 2. A. Hogan, “Canonical Forms for Isomorphic and Equivalent RDF Graphs: Algorithms for Leaning and Labelling Blank Nodes,” ACM Trans. Web, vol. 11, no. 4, pp. 22:1–22:62, Jul. 2017. [See PDF version](http://aidanhogan.com/docs/rdf-canonicalisation.pdf).
 
 (The second paper supersedes the first insofar that it slightly simplifies the relevant algorithm, although it also contains much more than what is relevant for this repository. Note also that the URL above for the second paper refers to the author’s copy on his Web site, which takes care of [some minor bugs](http://aidanhogan.com/#errataH17) that surfaced since the publication. That version was used for this implementation.)
