@@ -14,16 +14,17 @@ const { isoCanonicalize }                         = require('./lib/iso_canonical
 function perform_test(test_file) {
     let test_triples    =   "";
     test_triples    = fs.readFileSync(test_file).toString();
-    console.log(`>>> Test triples from ${test_file}:\n${test_triples}`);
+    console.error(`>>> Test triples from ${test_file}:\n${test_triples}`);
 
     let graph       = new Dataset().parse(test_triples);
     let can_dataset = isoCanonicalize(graph)
 
-    console.log(`>>> Calculated triples:\n${can_dataset.toString()}`);
+    console.error(`>>> Calculated triples:\n`);
+    process.stdout.write(can_dataset.toString());
 }
 
 if(process.argv.length < 3) {
-    console.log('Usage: [node] main.js fname');
+    console.error('Usage: [node] main.js fname');
 } else {
     perform_test(process.argv[2])
 }
