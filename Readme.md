@@ -20,6 +20,22 @@ The reason for doing this implementation was to explore whether it is possible t
 
 A matter of terminology: in this paper (and this implementation) a canonical version _can(G)_ of the Graph/Dataset _G_ is isomorphic to _G_ (i.e., _can(G)≅G_), and if _H≅G_ then _can(H)=can(G)_. In other words, it is an isomorphic graph where the blank node renaming bijection is _deterministic_.
 
+## Getting started
+
+The code works on Node versions not later than v16. To run the code:
+
+```sh
+npm install
+./main.js input.ttl
+```
+
+This will print both input and output statements on the console. If you wish to save the output into a file, use redirection, e.g.
+
+```sh
+./main.js input.ttl > output.ttl
+```
+
+
 ## [Adaptation of the algorithms to handle datasets](id:datasets)
 
 The changes/additions are as follows (each of those changes are relevant only if there _is_ a separate graph identifier, i.e., if we have a quad instead of a triple. If this is not the case, the algorithm falls back to the original).
