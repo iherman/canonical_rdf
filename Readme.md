@@ -1,3 +1,5 @@
+> This repository (and the underlying code) is now frozen. The W3C is in the process of publishing a standard for canonicalization (called [RDFC-1.0](https://www.w3.org/TR/rdf-canon/), and I have made a conforming implementation thereof, published in [rdfjs-c14n](https://github.com/iherman/rdfjs-c14n). The current version is, therefore, definitely out of date.
+
 [![DOI](https://zenodo.org/badge/134724887.svg)](https://zenodo.org/badge/latestdoi/134724887)
 
 
